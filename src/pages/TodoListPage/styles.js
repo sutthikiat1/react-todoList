@@ -10,6 +10,10 @@ export const DivBody = styled.div`
   border: 1px solid #d5d8dc;
   box-shadow: 2px 2px 18px #566573;
   background-color: #ffffff;
+
+  @media only screen and (max-width: 768px) {
+    width: 90%;
+  }
 `;
 
 export const DivTodoList = styled.div`
@@ -27,6 +31,10 @@ export const DivButtonCreateTodo = styled.div`
   margin-left: auto;
   margin-right: auto;
   padding-top: 20px;
+
+  @media only screen and (max-width: 768px) {
+    width: 90%;
+  }
 `;
 
 export const Footer = styled.footer`
