@@ -66,52 +66,56 @@ const ModalCreateTodo = (props) => {
   }
 
   async function onClick() {
-    if (title === "") {
+    if (title === "" || !title) {
       setValidateField((prevState) => ({
         ...prevState,
         title: "true",
       }));
     }
-    if (description === "") {
+    if (description === "" || !description) {
       setValidateField((prevState) => ({
         ...prevState,
         description: "true",
       }));
     }
 
-    if (description === "" || title === "") {
-      NotificationManager.error("กรุณากรอกข้อมูลให้ครบถ้วน");
-    } else {
-      let response;
-      if (type === "Create") {
-        response = await createAndUpdateTodo(type);
-      } else if (type === "Edit") {
-        response = await createAndUpdateTodo(type, idTodo);
-      }
-      console.log(response.data);
-      if (response.statusText === "OK") {
-        setTitle("");
-        setDescription("");
-        let response = await getTodos();
-        setTodoLists(response.data);
-        setAlert(
-          <SuccessAlert
-            title={`${type} Success !`}
-            hideAlert={() => {
-              setAlert(null);
-              setOpen(false);
-            }}
-          />
-        );
+    console.log(description, title);
+
+    if (description && title) {
+      if (description === "" || title === "") {
+        NotificationManager.error("กรุณากรอกข้อมูลให้ครบถ้วน");
       } else {
-        setAlert(
-          <ErrorAlert
-            title="ไม่สามารถทำรายการได้ !."
-            hideAlert={() => {
-              setAlert(null);
-            }}
-          />
-        );
+        let response;
+        if (type === "Create") {
+          response = await createAndUpdateTodo(type);
+        } else if (type === "Edit") {
+          response = await createAndUpdateTodo(type, idTodo);
+        }
+        console.log(response.data);
+        if (response.statusText === "OK") {
+          setTitle("");
+          setDescription("");
+          let response = await getTodos();
+          setTodoLists(response.data);
+          setAlert(
+            <SuccessAlert
+              title={`${type} Success !`}
+              hideAlert={() => {
+                setAlert(null);
+                setOpen(false);
+              }}
+            />
+          );
+        } else {
+          setAlert(
+            <ErrorAlert
+              title="ไม่สามารถทำรายการได้ !."
+              hideAlert={() => {
+                setAlert(null);
+              }}
+            />
+          );
+        }
       }
     }
   }
