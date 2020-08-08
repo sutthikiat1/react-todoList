@@ -1,17 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
+import { PrivateRoute, LoginRoute } from "./routes/PrivateRoute";
+import LoginPage from "./pages/LoginPage/LoginPage";
+import ErrorPage from "./pages/ErrorPage/ErrorPage";
+import TodoListPage from "./pages/TodoListPage/TodoListPage";
+import { ContextProvider } from "./hooks/ContextProvider";
+
+import "bootstrap/dist/css/bootstrap.min.css";
+import "react-notifications/lib/notifications.css";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+  <Router>
+    <Switch>
+      <LoginRoute exact path="/login" component={LoginPage} />
+      <ContextProvider>
+        <PrivateRoute exact path="/todo-list" component={TodoListPage} />
+      </ContextProvider>
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+      <PrivateRoute component={ErrorPage} />
+    </Switch>
+  </Router>,
+  document.getElementById("root")
+);
