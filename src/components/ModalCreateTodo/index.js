@@ -92,8 +92,10 @@ const ModalCreateTodo = (props) => {
       }
       console.log(response.data);
       if (response.statusText === "OK") {
-        setTitle("");
-        setDescription("");
+        if (type === "Create") {
+          setTitle("");
+          setDescription("");
+        }
         let response = await getTodos();
         setTodoLists(response.data);
         setAlert(
