@@ -6,10 +6,10 @@ export const DivCardTodo = styled.div`
   border: 1px solid #e5e8e8;
   box-shadow: 4px 4px 14px #b2babb;
   border-radius: 10px;
-
   display: flex;
+
   .bar {
-    width: 10px;
+    min-width: 10px;
     background: ${(props) => props.color};
     border-radius: 10px;
   }
@@ -24,8 +24,17 @@ export const DivContent = styled.div`
     padding: 10px;
     width: 100%;
 
+    h5 {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
     .text {
       width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .btn {
@@ -43,6 +52,21 @@ export const DivContent = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    .text-detail {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    h5 {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
     .date h6 {
       font-size: 12px;

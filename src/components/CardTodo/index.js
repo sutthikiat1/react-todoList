@@ -73,7 +73,7 @@ const CardTodo = (props) => {
           <div className="title">
             <div onClick={() => setOpenModal(true)} className="text">
               <h5>
-                Title :{" "}
+                Title :
                 <span style={{ fontSize: 16 }}>
                   {title ? title : "ไม่มีข้อมูล"}
                 </span>
@@ -84,9 +84,9 @@ const CardTodo = (props) => {
             </div>
           </div>
           <div className="detail" onClick={() => setOpenModal(true)}>
-            <div>
+            <div class="text-detail">
               <h5>
-                Detail :{" "}
+                Detail :
                 <span style={{ fontSize: 16 }}>
                   {description ? description : "ไม่มีข้อมูล"}
                 </span>
