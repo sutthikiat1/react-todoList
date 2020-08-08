@@ -18,13 +18,13 @@ const customStyles = {
     backgroundColor: "#000000a3",
   },
   content: {
-    maxWidth: "500px",
     top: "50%",
     left: "49%",
     right: "auto",
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
+    maxWidth: "500px",
   },
 };
 
@@ -161,7 +161,6 @@ const ModalCreateTodo = (props) => {
         onRequestClose={() => setOpen(false)}
         style={customStyles}
         isOpen={open}
-        contentLabel="Example Modal"
       >
         {alert}
         <DivModal>

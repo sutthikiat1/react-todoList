@@ -10,11 +10,11 @@ import ModalCreateTodo from "../../components/ModalCreateTodo";
 const CardTodo = (props) => {
   const { setTodoLists } = useContext(Context);
   const { data, getTodos } = props;
-  const { title, description, createAt, _id } = data;
+  const { title, description, createdAt, _id } = data;
   const [alert, setAlert] = useState(null);
   const colors = ["#EC7063", "#85C1E9", "#82E0AA", "#C39BD3", "#DC7633"];
   const random_color = colors[Math.floor(Math.random() * colors.length)];
-  const createDate = moment(createAt).format("DD-MM-YYYY");
+  const createDate = moment(createdAt).format("DD-MM-YYYY HH:mm");
   const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
