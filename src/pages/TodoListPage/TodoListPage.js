@@ -7,7 +7,7 @@ import CardTodo from "../../components/CardTodo";
 import axios from "axios";
 import { Context } from "../../hooks/ContextProvider";
 
-import { DivBody, DivTodoList, DivButtonCreateTodo } from "./styles";
+import { DivBody, DivTodoList, DivButtonCreateTodo, Footer } from "./styles";
 
 const TodoListPage = () => {
   let history = useHistory();
@@ -80,6 +80,24 @@ const TodoListPage = () => {
           &nbsp; Create
         </Button>
       </DivButtonCreateTodo>
+
+      <Footer>
+        <a
+          href="https://github.com/sutthikiat1"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          sutthikiat &nbsp;
+        </a>
+        X
+        <a
+          href="https://github.com/sutthikiat1"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          &nbsp; Todo List by Neversitup Co.,Ltd.
+        </a>
+      </Footer>
     </BasicLayout>
   );
 };

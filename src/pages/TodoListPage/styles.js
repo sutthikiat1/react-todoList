@@ -28,3 +28,20 @@ export const DivButtonCreateTodo = styled.div`
   margin-right: auto;
   padding-top: 20px;
 `;
+
+export const Footer = styled.footer`
+  position: absolute;
+  bottom: -20px;
+  color: red;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  right: 0;
+  left: 0;
+
+  a {
+    color: #000;
+    font-size: 1.1rem;
+    text-decoration: none;
+  }
+`;
