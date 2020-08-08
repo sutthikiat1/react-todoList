@@ -48,7 +48,7 @@ const CardTodo = (props) => {
         setTimeout(async () => {
           let response = await getTodos();
           setTodoLists(response.data);
-        }, 1100);
+        }, 1050);
       }
     } catch (e) {
       console.log(e);
@@ -84,7 +84,7 @@ const CardTodo = (props) => {
             </div>
           </div>
           <div className="detail" onClick={() => setOpenModal(true)}>
-            <div class="text-detail">
+            <div className="text-detail">
               <h5>
                 Detail :
                 <span style={{ fontSize: 16 }}>

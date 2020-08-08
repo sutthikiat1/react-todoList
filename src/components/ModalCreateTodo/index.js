@@ -44,8 +44,8 @@ const ModalCreateTodo = (props) => {
   }, []);
 
   useEffect(() => {
-    setTitle(props.title);
-    setDescription(props.description);
+    if (props.title) setTitle(props.title);
+    if (props.description) setDescription(props.description);
   }, [props.title, props.description]);
 
   function onChange(e) {
@@ -66,13 +66,13 @@ const ModalCreateTodo = (props) => {
   }
 
   async function onClick() {
-    if (title === "" || !title) {
+    if (title === "") {
       setValidateField((prevState) => ({
         ...prevState,
         title: "true",
       }));
     }
-    if (description === "" || !description) {
+    if (description === "") {
       setValidateField((prevState) => ({
         ...prevState,
         description: "true",
@@ -81,41 +81,39 @@ const ModalCreateTodo = (props) => {
 
     console.log(description, title);
 
-    if (description && title) {
-      if (description === "" || title === "") {
-        NotificationManager.error("กรุณากรอกข้อมูลให้ครบถ้วน");
+    if (description === "" || title === "") {
+      NotificationManager.error("กรุณากรอกข้อมูลให้ครบถ้วน");
+    } else {
+      let response;
+      if (type === "Create") {
+        response = await createAndUpdateTodo(type);
+      } else if (type === "Edit") {
+        response = await createAndUpdateTodo(type, idTodo);
+      }
+      console.log(response.data);
+      if (response.statusText === "OK") {
+        setTitle("");
+        setDescription("");
+        let response = await getTodos();
+        setTodoLists(response.data);
+        setAlert(
+          <SuccessAlert
+            title={`${type} Success !`}
+            hideAlert={() => {
+              setAlert(null);
+              setOpen(false);
+            }}
+          />
+        );
       } else {
-        let response;
-        if (type === "Create") {
-          response = await createAndUpdateTodo(type);
-        } else if (type === "Edit") {
-          response = await createAndUpdateTodo(type, idTodo);
-        }
-        console.log(response.data);
-        if (response.statusText === "OK") {
-          setTitle("");
-          setDescription("");
-          let response = await getTodos();
-          setTodoLists(response.data);
-          setAlert(
-            <SuccessAlert
-              title={`${type} Success !`}
-              hideAlert={() => {
-                setAlert(null);
-                setOpen(false);
-              }}
-            />
-          );
-        } else {
-          setAlert(
-            <ErrorAlert
-              title="ไม่สามารถทำรายการได้ !."
-              hideAlert={() => {
-                setAlert(null);
-              }}
-            />
-          );
-        }
+        setAlert(
+          <ErrorAlert
+            title="ไม่สามารถทำรายการได้ !."
+            hideAlert={() => {
+              setAlert(null);
+            }}
+          />
+        );
       }
     }
   }
