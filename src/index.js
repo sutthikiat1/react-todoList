@@ -15,10 +15,11 @@ ReactDOM.render(
     <Switch>
       <LoginRoute exact path="/login" component={LoginPage} />
       <ContextProvider>
+        <PrivateRoute exact path="/" component={TodoListPage} />
         <PrivateRoute exact path="/todo-list" component={TodoListPage} />
       </ContextProvider>
 
-      <PrivateRoute component={ErrorPage} />
+      <PrivateRoute exact component={ErrorPage} />
     </Switch>
   </Router>,
   document.getElementById("root")

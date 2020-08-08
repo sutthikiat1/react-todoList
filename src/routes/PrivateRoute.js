@@ -6,6 +6,7 @@ export function PrivateRoute({ component: Component, ...rest }) {
   const verify = token ? true : false;
 
   if (verify && rest.path === undefined) {
+    console.log(rest.path, 0);
     return (
       <Route
         {...rest}
