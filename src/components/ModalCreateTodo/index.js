@@ -18,7 +18,7 @@ const customStyles = {
     backgroundColor: "#000000a3",
   },
   content: {
-    width: "500px",
+    maxWidth: "500px",
     top: "50%",
     left: "49%",
     right: "auto",

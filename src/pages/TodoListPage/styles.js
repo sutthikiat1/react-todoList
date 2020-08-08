@@ -38,8 +38,7 @@ export const DivButtonCreateTodo = styled.div`
 `;
 
 export const Footer = styled.footer`
-  position: absolute;
-  bottom: -20px;
+  padding-top: 10px;
   color: red;
   text-align: center;
   margin-left: auto;
