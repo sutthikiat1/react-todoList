@@ -169,7 +169,7 @@ const ModalCreateTodo = (props) => {
         {alert}
         <DivModal>
           <div className="title">
-            <Label className="text-center">Create a List</Label>
+            <Label className="text-center">{type} a List</Label>
           </div>
           <div>
             <h6>
