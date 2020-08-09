@@ -10,7 +10,7 @@ import { Context } from "../../hooks/ContextProvider";
 import { DivBody, DivTodoList, DivButtonCreateTodo, Footer } from "./styles";
 
 const TodoListPage = () => {
-  let history = useHistory();
+  const history = useHistory();
   const { todoLists, setTodoLists } = useContext(Context);
   const [openModalCreateTodo, setOpenModalCreateTodo] = useState(false);
 

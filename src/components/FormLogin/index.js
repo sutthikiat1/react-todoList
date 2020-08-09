@@ -27,7 +27,9 @@ const FormLogin = () => {
     password: false,
   });
 
-  async function onSubmit() {
+  async function onSubmit(e) {
+    e.preventDefault();
+    console.log(username, password);
     if (username === "") {
       setValidateLogin((prevState) => ({
         ...prevState,
@@ -82,12 +84,6 @@ const FormLogin = () => {
     }
   }
 
-  function onKeyDown(e) {
-    if (e.key === "Enter") {
-      onSubmit();
-    }
-  }
-
   return (
     <>
       <NotificationContainer />
@@ -118,24 +114,32 @@ const FormLogin = () => {
             <br />
             <CustomeGrid item xs={12}>
               <DivInput>
-                <TextField
-                  error={validateLogin.password}
-                  value={password}
-                  id="password"
-                  onChange={(e) => onChange(e)}
-                  onKeyDown={(e) => onKeyDown(e)}
-                  type="password"
-                  label="password"
-                  fullWidth
-                  variant="outlined"
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <VpnKey />
-                      </InputAdornment>
-                    ),
-                  }}
-                />
+                <form
+                  onSubmit={(e) => onSubmit(e)}
+                  noValidate
+                  autoComplete="off"
+                >
+                  <TextField
+                    error={validateLogin.password}
+                    name="any-filed-name-here-password"
+                    autoComplete="new-password"
+                    value={password}
+                    id="password"
+                    onChange={(e) => onChange(e)}
+                    type="password"
+                    label="password"
+                    fullWidth
+                    variant="outlined"
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <VpnKey />
+                        </InputAdornment>
+                      ),
+                      autoComplete: "off",
+                    }}
+                  />
+                </form>
               </DivInput>
             </CustomeGrid>
             <CustomeGrid item xs={12}>
@@ -150,7 +154,7 @@ const FormLogin = () => {
             <CustomeGrid item xs={12}>
               <DivButtonLogin>
                 <Button
-                  onClick={() => onSubmit()}
+                  onClick={(e) => onSubmit(e)}
                   size="large"
                   variant="outlined"
                   color="primary"

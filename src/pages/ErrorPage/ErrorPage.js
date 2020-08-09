@@ -1,9 +1,14 @@
 import React from "react";
+import { DivErrorPage } from "./styles";
 
 export default function ErrorPage() {
   return (
-    <div>
+    <DivErrorPage>
       <h1>404 Page not Found</h1>
-    </div>
+      <img
+        src="https://i.pinimg.com/originals/40/fd/d2/40fdd2c61203798836ab2c55583726aa.png"
+        alt="notfound"
+      />
+    </DivErrorPage>
   );
 }

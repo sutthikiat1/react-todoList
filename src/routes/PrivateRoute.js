@@ -1,37 +1,37 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { Route, Redirect } from "react-router-dom";
+import { Context } from "../hooks/AuthProvider";
+import { ContextProvider } from "../hooks/ContextProvider";
 
 export function PrivateRoute({ component: Component, ...rest }) {
-  let token = localStorage.getItem("token");
-  const verify = token ? true : false;
+  const { verifyToken, auth } = useContext(Context);
 
-  if (verify && rest.path === undefined) {
-    console.log(rest.path, 0);
+  useEffect(() => {
+    (async function() {
+      await verifyToken();
+    })();
+  }, [verifyToken]);
+
+  if (auth && rest.path === "/") {
     return (
-      <Route
-        {...rest}
-        render={(props) =>
-          verify ? <Redirect to="/login" /> : <Component {...props} />
-        }
-      />
+      <ContextProvider>
+        <Route
+          {...rest}
+          render={(props) =>
+            auth ? <Redirect to="/todo-list" /> : <Component {...props} />
+          }
+        />
+      </ContextProvider>
     );
   } else {
-    if (verify) {
-      return <Route {...rest} render={(props) => <Component {...props} />} />;
+    if (auth) {
+      return (
+        <ContextProvider>
+          <Route {...rest} render={(props) => <Component {...props} />} />
+        </ContextProvider>
+      );
     } else {
       return <Route {...rest} render={(props) => <Redirect to="/login" />} />;
     }
-  }
-}
-
-export function LoginRoute({ component: Component, ...rest }) {
-  let token = localStorage.getItem("token");
-  if (token) {
-    return (
-      //ถ้ามี token เข้า path login ให้ไปหน้าที่ตั้งค่าไว้อัตโนมัติ
-      <Route {...rest} render={(props) => <Redirect to="/todo-list" />} />
-    );
-  } else {
-    return <Route {...rest} render={(props) => <Component {...props} />} />;
   }
 }
