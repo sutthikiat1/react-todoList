@@ -72,12 +72,10 @@ const CardTodo = (props) => {
         <DivContent>
           <div className="title">
             <div onClick={() => setOpenModal(true)} className="text">
-              <h5>
-                Title : &nbsp;
-                <span style={{ fontSize: 16 }}>
-                  {title ? title : "ไม่มีข้อมูล"}
-                </span>
-              </h5>
+              <h6>
+                <i className="far fa-dot-circle" />
+                {title ? title : "ไม่มีข้อมูล"}
+              </h6>
             </div>
             <div onClick={() => confrimDeleteTodo(title, _id)} className="btn">
               <i className="fas fa-times-circle" />
@@ -85,15 +83,15 @@ const CardTodo = (props) => {
           </div>
           <div className="detail" onClick={() => setOpenModal(true)}>
             <div className="text-detail">
-              <h5>
-                Detail : &nbsp;
-                <span style={{ fontSize: 16 }}>
-                  {description ? description : "ไม่มีข้อมูล"}
-                </span>
-              </h5>
+              <h6>
+                <i className="fas fa-info-circle" />
+                {description ? description : "ไม่มีข้อมูล"}
+              </h6>
             </div>
             <div className="date">
-              <h6>{createDate}</h6>
+              <h6>
+                <i className="far fa-calendar-alt" /> {createDate}
+              </h6>
             </div>
           </div>
         </DivContent>

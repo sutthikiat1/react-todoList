@@ -11,6 +11,12 @@ export const DivBody = styled.div`
   box-shadow: 2px 2px 18px #566573;
   background-color: #ffffff;
 
+  /* background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: top;
+  background-image: url(http://bit.ly/2gPLxZ4); */
+
   @media only screen and (max-width: 768px) {
     width: 90%;
   }

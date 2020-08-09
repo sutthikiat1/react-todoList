@@ -2,11 +2,14 @@ import styled from "styled-components";
 
 export const DivCardTodo = styled.div`
   padding: 10px;
+  max-height: 100px;
   margin-bottom: 10px;
   border: 1px solid #e5e8e8;
-  box-shadow: 4px 4px 14px #b2babb;
-  border-radius: 10px;
+  box-shadow: 4px 4px 18px #b2babb;
   display: flex;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
 
   .bar {
     min-width: 10px;
@@ -24,7 +27,25 @@ export const DivContent = styled.div`
     padding: 10px;
     width: 100%;
 
-    h5 {
+    .fa-dot-circle {
+      color: #3f51b5;
+      margin: 5px;
+      animation: mymove 0.5s infinite;
+    }
+
+    @keyframes mymove {
+      0% {
+        color: #91a5f3;
+      }
+      50% {
+        color: #7b93ef;
+      }
+      100% {
+        color: #3f51b5;
+      }
+    }
+
+    h6 {
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -41,13 +62,13 @@ export const DivContent = styled.div`
       font-size: 20px;
 
       &:hover {
-        color: red;
+        color: #f3483b;
       }
     }
   }
 
   .detail {
-    margin-top: -20px;
+    margin-top: -30px;
     padding: 10px;
     display: flex;
     justify-content: space-between;
@@ -56,19 +77,25 @@ export const DivContent = styled.div`
     overflow: hidden;
     text-overflow: ellipsis;
 
+    .fa-info-circle {
+      color: #b2babb;
+      margin: 5px;
+    }
+
     .text-detail {
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
 
-    h5 {
+    h6 {
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
 
     .date h6 {
+      color: #ccd1d1;
       font-size: 12px;
     }
   }
